@@ -264,21 +264,21 @@ namespace ConwaysGameOfLife
 
         private void spielfeldLadenToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            using (System.IO.FileStream fs = new FileStream(@"loadouts.obj", FileMode.Open))
+            using (System.IO.FileStream fs = new FileStream(@"loadouts.obj", FileMode.Open, FileAccess.Read))
             {
-                BinaryFormatter serializer = new BinaryFormatter();
-
+                TextReader reader = new StreamReader(fs);
                     for (int i = 0; i < 160; i++)
                     {
                         for (int l = 0; l < 116; l++)
                         {
-                          serializer.  
-                        //s += (int)(serializer.Deserialize(fs));
+                        string c = reader.ReadLine();
+                        if (c == "0") LiveArea[i, l].State = 0;
+                        else if (c == "1") LiveArea[i, l].State = 1;
+                        else LiveArea[i, l].State = 2;
                         }
-                    }
-                
+                    }         
             }
-            this.ShowDialog();
+            Invalidate();
         }
 
         /*
