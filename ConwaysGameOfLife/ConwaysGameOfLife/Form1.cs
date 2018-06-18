@@ -289,7 +289,7 @@ namespace ConwaysGameOfLife
             Invalidate();
         }
 
-<<<<<<< HEAD
+
         private static void LadeZellen(List<Cell> zellenListe)
         {
             using (System.IO.FileStream fs = new FileStream(@"\loadouts.obj", FileMode.Open))
@@ -332,19 +332,20 @@ namespace ConwaysGameOfLife
             using (System.IO.FileStream fs = new FileStream(@"loadouts.obj", FileMode.Open, FileAccess.Read))
             {
                 TextReader reader = new StreamReader(fs);
-                    for (int i = 0; i < 160; i++)
+                for (int i = 0; i < 160; i++)
+                {
+                    for (int l = 0; l < 116; l++)
                     {
-                        for (int l = 0; l < 116; l++)
-                        {
                         string c = reader.ReadLine();
                         if (c == "0") LiveArea[i, l].State = 0;
                         else if (c == "1") LiveArea[i, l].State = 1;
                         else LiveArea[i, l].State = 2;
-                        }
-                    }         
+                    }
+                }
             }
             Invalidate();
-=======
+        }
+
         private void antiwelt_Click(object sender, EventArgs e)
         {
             turnWorld();
@@ -355,7 +356,7 @@ namespace ConwaysGameOfLife
         {
             anti = !anti;
             return anti;
->>>>>>> b876b766a94ddef1f43073fbfb5f786f596bd36c
+
         }
 
         /*
