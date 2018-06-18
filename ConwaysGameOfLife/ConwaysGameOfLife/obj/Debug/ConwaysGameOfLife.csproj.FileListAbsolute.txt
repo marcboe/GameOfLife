@@ -16,7 +16,6 @@ D:\Neuer Ordner\Dropbox\Wirtschaftsinformatik BSc\C# - Entwicklung von Anwendung
 D:\Neuer Ordner\Dropbox\Wirtschaftsinformatik BSc\C# - Entwicklung von Anwendungskomponenten\Projekte\ConwaysGameOfLife\ConwaysGameOfLife\bin\Debug\ConwaysGameOfLife.exe
 D:\Neuer Ordner\Dropbox\Wirtschaftsinformatik BSc\C# - Entwicklung von Anwendungskomponenten\Projekte\ConwaysGameOfLife\ConwaysGameOfLife\bin\Debug\ConwaysGameOfLife.pdb
 D:\Neuer Ordner\Dropbox\Wirtschaftsinformatik BSc\C# - Entwicklung von Anwendungskomponenten\Projekte\ConwaysGameOfLife\ConwaysGameOfLife\obj\Debug\ConwaysGameOfLife.csprojResolveAssemblyReference.cache
-<<<<<<< HEAD
 C:\Users\marcb\Documents\Game Of Life\ConwaysGameOfLife\ConwaysGameOfLife\bin\Debug\ConwaysGameOfLife.exe.config
 C:\Users\marcb\Documents\Game Of Life\ConwaysGameOfLife\ConwaysGameOfLife\bin\Debug\ConwaysGameOfLife.exe
 C:\Users\marcb\Documents\Game Of Life\ConwaysGameOfLife\ConwaysGameOfLife\bin\Debug\ConwaysGameOfLife.pdb
