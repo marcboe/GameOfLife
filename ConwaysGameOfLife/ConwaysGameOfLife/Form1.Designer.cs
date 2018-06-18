@@ -38,6 +38,7 @@
             this.optionenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.farbenEinstellenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.zellfFarbetotToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.antiwelt = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarSpeed)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -137,11 +138,22 @@
             this.zellfFarbetotToolStripMenuItem.Text = "Zell-Farbe wählen (tot)";
             this.zellfFarbetotToolStripMenuItem.Click += new System.EventHandler(this.zellfFarbetotToolStripMenuItem_Click);
             // 
+            // antiwelt
+            // 
+            this.antiwelt.Location = new System.Drawing.Point(24, 229);
+            this.antiwelt.Name = "antiwelt";
+            this.antiwelt.Size = new System.Drawing.Size(75, 23);
+            this.antiwelt.TabIndex = 7;
+            this.antiwelt.Text = "Antiwelt";
+            this.antiwelt.UseVisualStyleBackColor = true;
+            this.antiwelt.Click += new System.EventHandler(this.antiwelt_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1067, 599);
+            this.Controls.Add(this.antiwelt);
             this.Controls.Add(this.buttonEinzelschritt);
             this.Controls.Add(this.labelSpeed);
             this.Controls.Add(this.trackBarSpeed);
@@ -174,6 +186,7 @@
         private System.Windows.Forms.ToolStripMenuItem optionenToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem farbenEinstellenToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem zellfFarbetotToolStripMenuItem;
+        private System.Windows.Forms.Button antiwelt;
     }
 }
 

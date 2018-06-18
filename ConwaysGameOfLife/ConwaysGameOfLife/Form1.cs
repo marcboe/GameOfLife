@@ -26,6 +26,9 @@ namespace ConwaysGameOfLife
         private ColorDialog cDead = new ColorDialog();
         private ColorDialog cBackground = new ColorDialog();
 
+        //Antiwelt setzen
+        bool anti = false;
+
         private void IniLiveArea()
         {
             LiveArea = new Cell[160, 116];
@@ -33,7 +36,7 @@ namespace ConwaysGameOfLife
             {
                 for (int l = 0; l < 116; l++)
                 {
-                    LiveArea[i, l] = new Cell(0,0);
+                    LiveArea[i, l] = new Cell(0, 0);
                 }
             }
         }
@@ -68,7 +71,7 @@ namespace ConwaysGameOfLife
             {
                 LiveArea[p.X, p.Y].State = 0;
             }
-            else 
+            else
             {
                 LiveArea[p.X, p.Y].State = 1;
             }
@@ -96,6 +99,11 @@ namespace ConwaysGameOfLife
 
         private void Animation()
         {
+            if (anti)
+            {
+               antiAnimation();
+                return;
+            }
             for (int i = 0; i < 160; i++)
             {
                 for (int k = 0; k < 116; k++)
@@ -120,24 +128,80 @@ namespace ConwaysGameOfLife
             {
                 for (int k = 0; k < 116; k++)
                 {
-                    if ((LiveArea[i, k].Environment == 3) && (LiveArea[i, k].State == 2 || LiveArea[i, k].State == 0))
+                    // 0 = leer
+                   // 1 = alive
+                   // 2 = dead
+                   
+                    // Normale Welt
+                    // kill ?
+                    if (LiveArea[i,k].State == 1)
                     {
-                        LiveArea[i, k].State = 1;
+                        if (LiveArea[i, k].Environment < 2 || LiveArea[i, k].Environment > 3)
+                            LiveArea[i, k].State = 2;
                     }
-                    else if (!(LiveArea[i, k].State == 0))
+                    // Normale Welt
+                    // birth ?
+                    if (LiveArea[i, k].State == 0 || LiveArea[i, k].State == 2)
                     {
-                        {
-                            if (LiveArea[i, k].Environment < 2 || LiveArea[i, k].Environment > 3
-                            && LiveArea[i, k].State == 1)
-                            {
-                                LiveArea[i, k].State = 2;
-                            }
-                        }
+                        if (LiveArea[i, k].Environment == 3)
+                            LiveArea[i, k].State = 1;
                     }
                 }
             }
             this.Invalidate();
         }
+       
+        
+        
+       private void antiAnimation()
+        {
+            for (int i = 0; i < 160; i++)
+            {
+                for (int k = 0; k < 116; k++)
+                {
+                    int x, y, count = 0;
+                    for (int a = -1; a <= 1; a++)
+                    {
+                        for (int b = -1; b <= 1; b++)
+                        {
+                            x = (i + 160 + a) % 160;
+                            y = (k + 116 + b) % 116;
+                            if (!(a == 0 && b == 0))
+                            {
+                                if (LiveArea[x, y].State == 1) count++;
+                            }
+                        }
+                    }
+                    LiveArea[i, k].Environment = count;
+                }
+            }
+            for (int i = 0; i < 160; i++)
+            {
+                for (int k = 0; k < 116; k++)
+                {
+                    // 0 = leer
+                    // 1 = alive
+                    // 2 = dead
+
+                    // Antiwelt
+                    // kill ?
+                    if (LiveArea[i, k].State == 1)
+                    {
+                        if (LiveArea[i, k].Environment == 5)
+                            LiveArea[i, k].State = 2;
+                    }
+                    // Antiwelt
+                    // birth ?
+                    if (LiveArea[i, k].State == 0 || LiveArea[i, k].State == 2)
+                    {
+                        if (LiveArea[i, k].Environment < 5 || LiveArea[i, k].Environment > 6)
+                            LiveArea[i, k].State = 1;
+                    }
+                }
+            }
+            this.Invalidate();
+        }
+       
 
         public void DrawCell(object sender, System.Windows.Forms.PaintEventArgs e)
         {
@@ -222,6 +286,18 @@ namespace ConwaysGameOfLife
             brushDead = new SolidBrush(cDead.Color);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.DrawCell);
             Invalidate();
+        }
+
+        private void antiwelt_Click(object sender, EventArgs e)
+        {
+            turnWorld();
+            antiwelt.Text = "Normal";
+        }
+
+        private bool turnWorld()
+        {
+            anti = !anti;
+            return anti;
         }
 
         /*
