@@ -13,6 +13,7 @@ namespace ConwaysGameOfLife
 {
     public partial class Form1 : Form
     {
+        //Test SourceTree
         public static System.Windows.Forms.Timer timer_1 = new System.Windows.Forms.Timer();
 
         private Cell[,] LiveArea;
