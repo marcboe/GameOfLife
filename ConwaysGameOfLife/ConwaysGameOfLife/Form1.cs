@@ -17,7 +17,7 @@ namespace ConwaysGameOfLife
 
         private Cell[,] LiveArea;
         private static double turns;
-
+        // brushDead wird benötigt, um die Farbe toter Zellen zu überschreiben
         private SolidBrush brush = new SolidBrush(Color.LightSeaGreen);
         private SolidBrush brushDead = new SolidBrush(Color.LightGray);
 
