@@ -28,6 +28,22 @@ namespace ConwaysGameOfLife
         //Antiwelt setzen
         bool anti = false;
 
+        // Regel Array
+        int[,] rule;
+        private int [,] fill(int [,] rule)
+        {
+            for (int i =0; i<9; i++)
+            {
+                for (int k = ; k <3; k++)
+
+            }
+            return rule;
+        }
+        
+
+
+
+
         private void IniLiveArea()
         {
             LiveArea = new Cell[160, 116];
@@ -133,9 +149,15 @@ namespace ConwaysGameOfLife
                    
                     // Normale Welt
                     // kill ?
-                    if (LiveArea[i,k].State == 1)
+                    if (LiveArea[i,k].State == 1)           // 0,1,   4,5,6,7,8
                     {
-                        if (LiveArea[i, k].Environment < 2 || LiveArea[i, k].Environment > 3)
+                        if (LiveArea[i, k].Environment == 0 ||
+                            LiveArea[i, k].Environment == 1 ||
+                            LiveArea[i, k].Environment == 4 ||
+                            LiveArea[i, k].Environment == 5 ||
+                            LiveArea[i, k].Environment == 6 ||
+                            LiveArea[i, k].Environment == 7 ||
+                            LiveArea[i, k].Environment == 8  )
                             LiveArea[i, k].State = 2;
                     }
                     // Normale Welt

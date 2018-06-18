@@ -39,6 +39,10 @@
             this.farbenEinstellenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.zellfFarbetotToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.antiwelt = new System.Windows.Forms.Button();
+            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
+            this.checkedListBox2 = new System.Windows.Forms.CheckedListBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarSpeed)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -140,7 +144,7 @@
             // 
             // antiwelt
             // 
-            this.antiwelt.Location = new System.Drawing.Point(24, 229);
+            this.antiwelt.Location = new System.Drawing.Point(12, 435);
             this.antiwelt.Name = "antiwelt";
             this.antiwelt.Size = new System.Drawing.Size(75, 23);
             this.antiwelt.TabIndex = 7;
@@ -148,11 +152,69 @@
             this.antiwelt.UseVisualStyleBackColor = true;
             this.antiwelt.Click += new System.EventHandler(this.antiwelt_Click);
             // 
+            // checkedListBox1
+            // 
+            this.checkedListBox1.FormattingEnabled = true;
+            this.checkedListBox1.Items.AddRange(new object[] {
+            "0 Nachbarn",
+            "1 Nachbarn",
+            "2 Nachbarn",
+            "3 Nachbarn",
+            "4 Nachbarn",
+            "5 Nachbarn",
+            "6 Nachbarn",
+            "7 Nachbarn",
+            "8 Nachbarn"});
+            this.checkedListBox1.Location = new System.Drawing.Point(134, 178);
+            this.checkedListBox1.Name = "checkedListBox1";
+            this.checkedListBox1.Size = new System.Drawing.Size(120, 94);
+            this.checkedListBox1.TabIndex = 8;
+            // 
+            // checkedListBox2
+            // 
+            this.checkedListBox2.FormattingEnabled = true;
+            this.checkedListBox2.Items.AddRange(new object[] {
+            "0 Nachbarn",
+            "1 Nachbarn",
+            "2 Nachbarn",
+            "3 Nachbarn",
+            "4 Nachbarn",
+            "5 Nachbarn",
+            "6 Nachbarn",
+            "7 Nachbarn",
+            "8 Nachbarn"});
+            this.checkedListBox2.Location = new System.Drawing.Point(12, 178);
+            this.checkedListBox2.Name = "checkedListBox2";
+            this.checkedListBox2.Size = new System.Drawing.Size(120, 94);
+            this.checkedListBox2.TabIndex = 9;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(9, 159);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(86, 13);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "Belebe Zelle bei:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(131, 159);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(75, 13);
+            this.label2.TabIndex = 11;
+            this.label2.Text = "Töte Zelle bei:";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1067, 599);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.checkedListBox2);
+            this.Controls.Add(this.checkedListBox1);
             this.Controls.Add(this.antiwelt);
             this.Controls.Add(this.buttonEinzelschritt);
             this.Controls.Add(this.labelSpeed);
@@ -187,6 +249,10 @@
         private System.Windows.Forms.ToolStripMenuItem farbenEinstellenToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem zellfFarbetotToolStripMenuItem;
         private System.Windows.Forms.Button antiwelt;
+        private System.Windows.Forms.CheckedListBox checkedListBox1;
+        private System.Windows.Forms.CheckedListBox checkedListBox2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }
 
