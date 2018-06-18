@@ -38,8 +38,12 @@
             this.optionenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.farbenEinstellenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.zellfFarbetotToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+<<<<<<< HEAD
             this.spielfeldSpeichernToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.spielfeldLadenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+=======
+            this.antiwelt = new System.Windows.Forms.Button();
+>>>>>>> b876b766a94ddef1f43073fbfb5f786f596bd36c
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarSpeed)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -141,6 +145,7 @@
             this.zellfFarbetotToolStripMenuItem.Text = "Zell-Farbe wählen (tot)";
             this.zellfFarbetotToolStripMenuItem.Click += new System.EventHandler(this.zellfFarbetotToolStripMenuItem_Click);
             // 
+<<<<<<< HEAD
             // spielfeldSpeichernToolStripMenuItem
             // 
             this.spielfeldSpeichernToolStripMenuItem.Name = "spielfeldSpeichernToolStripMenuItem";
@@ -154,12 +159,24 @@
             this.spielfeldLadenToolStripMenuItem.Size = new System.Drawing.Size(215, 22);
             this.spielfeldLadenToolStripMenuItem.Text = "Spielfeld laden";
             this.spielfeldLadenToolStripMenuItem.Click += new System.EventHandler(this.spielfeldLadenToolStripMenuItem_Click);
+=======
+            // antiwelt
+            // 
+            this.antiwelt.Location = new System.Drawing.Point(24, 229);
+            this.antiwelt.Name = "antiwelt";
+            this.antiwelt.Size = new System.Drawing.Size(75, 23);
+            this.antiwelt.TabIndex = 7;
+            this.antiwelt.Text = "Antiwelt";
+            this.antiwelt.UseVisualStyleBackColor = true;
+            this.antiwelt.Click += new System.EventHandler(this.antiwelt_Click);
+>>>>>>> b876b766a94ddef1f43073fbfb5f786f596bd36c
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1067, 599);
+            this.Controls.Add(this.antiwelt);
             this.Controls.Add(this.buttonEinzelschritt);
             this.Controls.Add(this.labelSpeed);
             this.Controls.Add(this.trackBarSpeed);
@@ -192,8 +209,12 @@
         private System.Windows.Forms.ToolStripMenuItem optionenToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem farbenEinstellenToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem zellfFarbetotToolStripMenuItem;
+<<<<<<< HEAD
         private System.Windows.Forms.ToolStripMenuItem spielfeldSpeichernToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem spielfeldLadenToolStripMenuItem;
+=======
+        private System.Windows.Forms.Button antiwelt;
+>>>>>>> b876b766a94ddef1f43073fbfb5f786f596bd36c
     }
 }
 
