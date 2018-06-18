@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -15,7 +17,7 @@ namespace ConwaysGameOfLife
     {
         public static System.Windows.Forms.Timer timer_1 = new System.Windows.Forms.Timer();
 
-        private Cell[,] LiveArea;
+        private static Cell[,] LiveArea;
         private static double turns;
         // brushDead wird benötigt, um die Farbe toter Zellen zu überschreiben
         private SolidBrush brush = new SolidBrush(Color.LightSeaGreen);
@@ -309,6 +311,63 @@ namespace ConwaysGameOfLife
             Invalidate();
         }
 
+
+        private static void LadeZellen(List<Cell> zellenListe)
+        {
+            using (System.IO.FileStream fs = new FileStream(@"\loadouts.obj", FileMode.Open))
+            {
+                BinaryFormatter serializer = new BinaryFormatter();
+
+                while (true)
+                {
+                    try
+                    {
+                        zellenListe.Add((Cell)serializer.Deserialize(fs));
+                    }
+                    catch
+                    { break; }
+                }
+            }
+        }
+
+        private void spielfeldSpeichernToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Cell c;
+            using (FileStream fs = new FileStream(@"loadouts.obj", FileMode.Create))
+            {
+                using (StreamWriter sw = new StreamWriter(fs))
+                {
+                    for (int i = 0; i < 160; i++)
+                    {
+                        for (int l = 0; l < 116; l++)
+                        {
+                            c = LiveArea[i, l];
+                            sw.WriteLine(c.State);
+                        }
+                    }
+                }
+            }
+        }
+
+        private void spielfeldLadenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (System.IO.FileStream fs = new FileStream(@"loadouts.obj", FileMode.Open, FileAccess.Read))
+            {
+                TextReader reader = new StreamReader(fs);
+                for (int i = 0; i < 160; i++)
+                {
+                    for (int l = 0; l < 116; l++)
+                    {
+                        string c = reader.ReadLine();
+                        if (c == "0") LiveArea[i, l].State = 0;
+                        else if (c == "1") LiveArea[i, l].State = 1;
+                        else LiveArea[i, l].State = 2;
+                    }
+                }
+            }
+            Invalidate();
+        }
+
         private void antiwelt_Click(object sender, EventArgs e)
         {
             turnWorld();
@@ -319,6 +378,7 @@ namespace ConwaysGameOfLife
         {
             anti = !anti;
             return anti;
+
         }
 
         /*

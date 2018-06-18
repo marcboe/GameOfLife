@@ -38,6 +38,8 @@
             this.optionenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.farbenEinstellenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.zellfFarbetotToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.spielfeldSpeichernToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.spielfeldLadenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.antiwelt = new System.Windows.Forms.Button();
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             this.checkedListBox2 = new System.Windows.Forms.CheckedListBox();
@@ -123,7 +125,9 @@
             // 
             this.optionenToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.farbenEinstellenToolStripMenuItem,
-            this.zellfFarbetotToolStripMenuItem});
+            this.zellfFarbetotToolStripMenuItem,
+            this.spielfeldSpeichernToolStripMenuItem,
+            this.spielfeldLadenToolStripMenuItem});
             this.optionenToolStripMenuItem.Name = "optionenToolStripMenuItem";
             this.optionenToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
             this.optionenToolStripMenuItem.Text = "Optionen";
@@ -142,6 +146,19 @@
             this.zellfFarbetotToolStripMenuItem.Text = "Zell-Farbe wählen (tot)";
             this.zellfFarbetotToolStripMenuItem.Click += new System.EventHandler(this.zellfFarbetotToolStripMenuItem_Click);
             // 
+            // spielfeldSpeichernToolStripMenuItem
+            // 
+            this.spielfeldSpeichernToolStripMenuItem.Name = "spielfeldSpeichernToolStripMenuItem";
+            this.spielfeldSpeichernToolStripMenuItem.Size = new System.Drawing.Size(215, 22);
+            this.spielfeldSpeichernToolStripMenuItem.Text = "Spielfeld speichern";
+            this.spielfeldSpeichernToolStripMenuItem.Click += new System.EventHandler(this.spielfeldSpeichernToolStripMenuItem_Click);
+            // 
+            // spielfeldLadenToolStripMenuItem
+            // 
+            this.spielfeldLadenToolStripMenuItem.Name = "spielfeldLadenToolStripMenuItem";
+            this.spielfeldLadenToolStripMenuItem.Size = new System.Drawing.Size(215, 22);
+            this.spielfeldLadenToolStripMenuItem.Text = "Spielfeld laden";
+            this.spielfeldLadenToolStripMenuItem.Click += new System.EventHandler(this.spielfeldLadenToolStripMenuItem_Click);
             // antiwelt
             // 
             this.antiwelt.Location = new System.Drawing.Point(12, 435);
@@ -248,6 +265,8 @@
         private System.Windows.Forms.ToolStripMenuItem optionenToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem farbenEinstellenToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem zellfFarbetotToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem spielfeldSpeichernToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem spielfeldLadenToolStripMenuItem;
         private System.Windows.Forms.Button antiwelt;
         private System.Windows.Forms.CheckedListBox checkedListBox1;
         private System.Windows.Forms.CheckedListBox checkedListBox2;
