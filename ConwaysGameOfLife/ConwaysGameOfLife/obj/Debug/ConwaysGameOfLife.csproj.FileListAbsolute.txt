@@ -36,4 +36,3 @@ C:\Users\peter\Documents\GameOfLife\ConwaysGameOfLife\ConwaysGameOfLife\obj\Debu
 C:\Users\peter\Documents\GameOfLife\ConwaysGameOfLife\ConwaysGameOfLife\obj\Debug\ConwaysGameOfLife.csproj.GenerateResource.Cache
 C:\Users\peter\Documents\GameOfLife\ConwaysGameOfLife\ConwaysGameOfLife\obj\Debug\ConwaysGameOfLife.exe
 C:\Users\peter\Documents\GameOfLife\ConwaysGameOfLife\ConwaysGameOfLife\obj\Debug\ConwaysGameOfLife.pdb
->>>>>>> f4446e26daddbd9afe7e9b8e8ee5a8b868147ca2
