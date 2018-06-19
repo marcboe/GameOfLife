@@ -25,7 +25,7 @@ namespace ConwaysGameOfLife
 
         private ColorDialog c = new ColorDialog();
         private ColorDialog cDead = new ColorDialog();
-        private ColorDialog cBackground = new ColorDialog();
+        // nicht benötigt, Methode wird nicht verwendet. private ColorDialog cBackground = new ColorDialog();
 
         int alive = 1, dead = 2;
 
@@ -255,25 +255,6 @@ namespace ConwaysGameOfLife
             brushDead = new SolidBrush(cDead.Color);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.DrawCell);
             Invalidate();
-        }
-
-
-        private static void LadeZellen(List<Cell> zellenListe)
-        {
-            using (System.IO.FileStream fs = new FileStream(@"\loadouts.obj", FileMode.Open))
-            {
-                BinaryFormatter serializer = new BinaryFormatter();
-
-                while (true)
-                {
-                    try
-                    {
-                        zellenListe.Add((Cell)serializer.Deserialize(fs));
-                    }
-                    catch
-                    { break; }
-                }
-            }
         }
 
         private void spielfeldSpeichernToolStripMenuItem_Click(object sender, EventArgs e)
