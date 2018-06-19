@@ -27,26 +27,23 @@ namespace ConwaysGameOfLife
         private ColorDialog cDead = new ColorDialog();
         private ColorDialog cBackground = new ColorDialog();
 
+        int alive = 1, dead = 2;
+
         //Antiwelt setzen
         bool anti = false;
 
         int[] rule = new int[9];
-        // 0 = non     1 = birth      2 = kill 
-        int x0 = 2;
-        int x1 = 2;
-        int x2 = 0;
-        int x3 = 1;
-        int x4 = 2;
-        int x5 = 2;
-        int x6 = 2;
-        int x7 = 2;
-        int x8 = 2;
+       
+       // 0 = non     1 = birth      2 = kill 
+        int x0 = 2, x1 = 2, x2 = 0, x3 = 1, x4 = 2, x5 = 2, x6 = 2, x7 = 2, x8 = 2;
         // Regel Array
-        private void InitRule()
+        private int [] InitRule()
         {
              rule = new int[] { x0, x1, x2, x3, x4, x5, x6, x7, x8 };
+            return rule;
         }
 
+        
 
         private void IniLiveArea()
         {
@@ -64,6 +61,7 @@ namespace ConwaysGameOfLife
 
         public Form1()
         {
+            rule = InitRule();
             InitializeComponent();
             IniLiveArea();
             turns = 1;
@@ -118,11 +116,9 @@ namespace ConwaysGameOfLife
 
         private void Animation()
         {
-            if (anti)
-            {
-               antiAnimation();
-                return;
-            }
+
+           
+           
             for (int i = 0; i < 160; i++)
             {
                 for (int k = 0; k < 116; k++)
@@ -147,28 +143,26 @@ namespace ConwaysGameOfLife
             {
                 for (int k = 0; k < 116; k++)
                 {
-                    // 0 = leer
-                   // 1 = alive
-                   // 2 = dead
-                   
+                    // 0 = empty
+                    // 1 = alive
+                    // 2 = dead
+
+                    
+
+
                     // Normale Welt
                     // kill ?
-                    if (LiveArea[i,k].State == 1)           // 0,1,   4,5,6,7,8
+                    if (LiveArea[i,k].State == alive)           // 0,1,   4,5,6,7,8
                     {
-                        if (LiveArea[i, k].Environment == 0 ||
-                            LiveArea[i, k].Environment == 1 ||
-                            LiveArea[i, k].Environment == 4 ||
-                            LiveArea[i, k].Environment == 5 ||
-                            LiveArea[i, k].Environment == 6 ||
-                            LiveArea[i, k].Environment == 7 ||
-                            LiveArea[i, k].Environment == 8  )
-                            LiveArea[i, k].State = 2;
+                        
+                        if (rule[ LiveArea[i, k].Environment ] == 2)
+                            LiveArea[i, k].State = 2;    
                     }
                     // Normale Welt
                     // birth ?
-                    if (LiveArea[i, k].State == 0 || LiveArea[i, k].State == 2)
+                    if (LiveArea[i, k].State == 0 || LiveArea[i, k].State == dead )
                     {
-                        if (LiveArea[i, k].Environment == 3)
+                        if (rule[ LiveArea[i, k].Environment ] == 1)
                             LiveArea[i, k].State = 1;
                     }
                 }
@@ -176,56 +170,6 @@ namespace ConwaysGameOfLife
             this.Invalidate();
         }
        
-        
-        
-       private void antiAnimation()
-        {
-            for (int i = 0; i < 160; i++)
-            {
-                for (int k = 0; k < 116; k++)
-                {
-                    int x, y, count = 0;
-                    for (int a = -1; a <= 1; a++)
-                    {
-                        for (int b = -1; b <= 1; b++)
-                        {
-                            x = (i + 160 + a) % 160;
-                            y = (k + 116 + b) % 116;
-                            if (!(a == 0 && b == 0))
-                            {
-                                if (LiveArea[x, y].State == 1) count++;
-                            }
-                        }
-                    }
-                    LiveArea[i, k].Environment = count;
-                }
-            }
-            for (int i = 0; i < 160; i++)
-            {
-                for (int k = 0; k < 116; k++)
-                {
-                    // 0 = leer
-                    // 1 = alive
-                    // 2 = dead
-
-                    // Antiwelt
-                    // kill ?
-                    if (LiveArea[i, k].State == 1)
-                    {
-                        if (LiveArea[i, k].Environment == 5)
-                            LiveArea[i, k].State = 2;
-                    }
-                    // Antiwelt
-                    // birth ?
-                    if (LiveArea[i, k].State == 0 || LiveArea[i, k].State == 2)
-                    {
-                        if (LiveArea[i, k].Environment < 5 || LiveArea[i, k].Environment > 6)
-                            LiveArea[i, k].State = 1;
-                    }
-                }
-            }
-            this.Invalidate();
-        }
        
 
         public void DrawCell(object sender, System.Windows.Forms.PaintEventArgs e)
@@ -373,11 +317,36 @@ namespace ConwaysGameOfLife
         private void antiwelt_Click(object sender, EventArgs e)
         {
             turnWorld();
-            antiwelt.Text = "Normal";
+            if (anti)
+                antiwelt.Text = "Normal";
+            if (!anti)
+                antiwelt.Text = "Antiwelt";
         }
 
         private bool turnWorld()
         {
+            int change = alive;
+            alive = dead;
+            dead = change;
+
+            int[] ruleChange  = new int [9];
+            
+            for (int i=0; i<9; i++)
+            {
+                ruleChange[8 - i] = rule[i];
+            }
+
+            for (int i = 0; i < 9; i++)
+            {
+                if (ruleChange[i] == 2)
+                    ruleChange[i] = 1;
+                else
+                    if (ruleChange[i] == 1)
+                        ruleChange[i] = 2;
+            }
+            rule = ruleChange;
+
+
             anti = !anti;
             return anti;
 
