@@ -34,11 +34,7 @@ namespace ConwaysGameOfLife
 
         int[] rule = new int[9];
 
-        // Größe Setzen
-        int Xsize = 160;
-        int Ysize = 116;
-      
-
+       
         private void IniLiveArea()
         {
             LiveArea = new Cell[160, 116];
@@ -471,15 +467,7 @@ namespace ConwaysGameOfLife
 
 
 
-        /*
-         * 
-         *                    GRÖSSE 
-         * 
-         */
-        public void setSizeLbel()
-        {
-            sizeLabel.Text = "Spielfeldgröße"; 
-        }
+       
 
 
 
