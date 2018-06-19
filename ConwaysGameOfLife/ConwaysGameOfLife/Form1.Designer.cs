@@ -47,6 +47,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.changeSet = new System.Windows.Forms.Button();
             this.resetChange = new System.Windows.Forms.Button();
+            this.clearBox = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarSpeed)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -164,7 +165,7 @@
             // 
             // antiwelt
             // 
-            this.antiwelt.Location = new System.Drawing.Point(12, 435);
+            this.antiwelt.Location = new System.Drawing.Point(24, 433);
             this.antiwelt.Name = "antiwelt";
             this.antiwelt.Size = new System.Drawing.Size(75, 23);
             this.antiwelt.TabIndex = 7;
@@ -228,7 +229,7 @@
             // 
             // changeSet
             // 
-            this.changeSet.Location = new System.Drawing.Point(24, 328);
+            this.changeSet.Location = new System.Drawing.Point(12, 328);
             this.changeSet.Name = "changeSet";
             this.changeSet.Size = new System.Drawing.Size(75, 23);
             this.changeSet.TabIndex = 12;
@@ -238,7 +239,7 @@
             // 
             // resetChange
             // 
-            this.resetChange.Location = new System.Drawing.Point(149, 328);
+            this.resetChange.Location = new System.Drawing.Point(174, 328);
             this.resetChange.Name = "resetChange";
             this.resetChange.Size = new System.Drawing.Size(75, 23);
             this.resetChange.TabIndex = 13;
@@ -246,11 +247,22 @@
             this.resetChange.UseVisualStyleBackColor = true;
             this.resetChange.Click += new System.EventHandler(this.resetChange_Click);
             // 
+            // clearBox
+            // 
+            this.clearBox.Location = new System.Drawing.Point(93, 328);
+            this.clearBox.Name = "clearBox";
+            this.clearBox.Size = new System.Drawing.Size(75, 23);
+            this.clearBox.TabIndex = 14;
+            this.clearBox.Text = "Leeren";
+            this.clearBox.UseVisualStyleBackColor = true;
+            this.clearBox.Click += new System.EventHandler(this.clearBox_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1067, 599);
+            this.Controls.Add(this.clearBox);
             this.Controls.Add(this.resetChange);
             this.Controls.Add(this.changeSet);
             this.Controls.Add(this.label2);
@@ -299,6 +311,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button changeSet;
         private System.Windows.Forms.Button resetChange;
+        private System.Windows.Forms.Button clearBox;
     }
 }
 
