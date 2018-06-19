@@ -35,11 +35,12 @@ namespace ConwaysGameOfLife
         int[] rule = new int[9];
        
        // 0 = non     1 = birth      2 = kill 
-        int x0 = 2, x1 = 2, x2 = 0, x3 = 1, x4 = 2, x5 = 2, x6 = 2, x7 = 2, x8 = 2;
+        
         // Regel Array
         private int [] InitRule()
         {
-             rule = new int[] { x0, x1, x2, x3, x4, x5, x6, x7, x8 };
+            int x0 = 2, x1 = 2, x2 = 0, x3 = 1, x4 = 2, x5 = 2, x6 = 2, x7 = 2, x8 = 2;
+            rule = new int[] { x0, x1, x2, x3, x4, x5, x6, x7, x8 };
             return rule;
         }
 
@@ -167,7 +168,29 @@ namespace ConwaysGameOfLife
                     }
                 }
             }
-            this.Invalidate();
+
+            //Box aktuellem Stand anpassen
+            for (int i = 0; i < 9; i++)
+            {
+                if (rule[i] == 1)
+                {
+                    checkedListBox2.SetItemChecked(i, true);
+                    checkedListBox1.SetItemChecked(i, false);
+                }
+                else if (rule[i] == 2)
+                {
+                    checkedListBox1.SetItemChecked(i, true);
+                    checkedListBox2.SetItemChecked(i, false);
+                }
+                else
+                {
+                    checkedListBox1.SetItemChecked(i, false);
+                    checkedListBox2.SetItemChecked(i, false);
+                }
+
+            }
+
+                this.Invalidate();
         }
        
        
@@ -211,6 +234,69 @@ namespace ConwaysGameOfLife
                     this.Text = String.Format("Marc und Peters GameOfLife - Simulation beendet bei Runde {0}.",Math.Round(turns).ToString());
                 }
             }
+        }
+
+        private void changeSet_Click(object sender, EventArgs e)
+        {
+            // Births auslesen
+            for (int i =0; i< 9; i++)
+            {
+                if (checkedListBox2.GetItemChecked(i))
+                    if (!checkedListBox1.GetItemChecked(i))
+                        rule[i] = 1;
+                    else
+                    {
+                        MessageBox.Show(" Bitte Möglichkeiten nicht doppelt belegen!", "Fehler!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+            }
+            // Kills auslesen
+            for (int i = 0; i < 9; i++)
+            {
+                if (checkedListBox1.GetItemChecked(i))
+                    if (!checkedListBox2.GetItemChecked(i))
+                        rule[i] = 2;
+                    else
+                    {
+                        MessageBox.Show(" Bitte Möglichkeiten nicht doppelt belegen!", "Fehler!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                
+                
+            }
+
+            // leere Boxen auslesen
+            for (int i = 0; i < 9; i++)
+            {
+                if (!checkedListBox1.GetItemChecked(i))
+                    if (!checkedListBox2.GetItemChecked(i))
+                        rule[i] = 0;
+            }
+
+            MessageBox.Show("Einstellungen wurden übernommen", "Fertig", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+
+            for (int i = 0; i < 9; i++)
+            {
+                checkedListBox2.SetItemCheckState(i, CheckState.Unchecked);
+            }
+
+            for (int i = 0; i < 9; i++)
+            {
+                checkedListBox1.SetItemCheckState(i, CheckState.Unchecked);
+            }
+
+        }
+
+        private void resetChange_Click(object sender, EventArgs e)
+        {
+            anti = false;
+            InitRule();
+            antiwelt.Text = "Antiwelt";
+
+            this.Invalidate();
+
         }
 
         private void buttonLeeren_Click(object sender, EventArgs e)

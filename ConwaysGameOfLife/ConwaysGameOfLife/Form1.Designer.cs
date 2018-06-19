@@ -45,6 +45,8 @@
             this.checkedListBox2 = new System.Windows.Forms.CheckedListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.changeSet = new System.Windows.Forms.Button();
+            this.resetChange = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarSpeed)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -159,6 +161,7 @@
             this.spielfeldLadenToolStripMenuItem.Size = new System.Drawing.Size(215, 22);
             this.spielfeldLadenToolStripMenuItem.Text = "Spielfeld laden";
             this.spielfeldLadenToolStripMenuItem.Click += new System.EventHandler(this.spielfeldLadenToolStripMenuItem_Click);
+            // 
             // antiwelt
             // 
             this.antiwelt.Location = new System.Drawing.Point(12, 435);
@@ -184,7 +187,7 @@
             "8 Nachbarn"});
             this.checkedListBox1.Location = new System.Drawing.Point(134, 178);
             this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(120, 94);
+            this.checkedListBox1.Size = new System.Drawing.Size(120, 139);
             this.checkedListBox1.TabIndex = 8;
             // 
             // checkedListBox2
@@ -202,7 +205,7 @@
             "8 Nachbarn"});
             this.checkedListBox2.Location = new System.Drawing.Point(12, 178);
             this.checkedListBox2.Name = "checkedListBox2";
-            this.checkedListBox2.Size = new System.Drawing.Size(120, 94);
+            this.checkedListBox2.Size = new System.Drawing.Size(120, 139);
             this.checkedListBox2.TabIndex = 9;
             // 
             // label1
@@ -223,11 +226,33 @@
             this.label2.TabIndex = 11;
             this.label2.Text = "Töte Zelle bei:";
             // 
+            // changeSet
+            // 
+            this.changeSet.Location = new System.Drawing.Point(24, 328);
+            this.changeSet.Name = "changeSet";
+            this.changeSet.Size = new System.Drawing.Size(75, 23);
+            this.changeSet.TabIndex = 12;
+            this.changeSet.Text = "Ändern";
+            this.changeSet.UseVisualStyleBackColor = true;
+            this.changeSet.Click += new System.EventHandler(this.changeSet_Click);
+            // 
+            // resetChange
+            // 
+            this.resetChange.Location = new System.Drawing.Point(149, 328);
+            this.resetChange.Name = "resetChange";
+            this.resetChange.Size = new System.Drawing.Size(75, 23);
+            this.resetChange.TabIndex = 13;
+            this.resetChange.Text = "Standart";
+            this.resetChange.UseVisualStyleBackColor = true;
+            this.resetChange.Click += new System.EventHandler(this.resetChange_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1067, 599);
+            this.Controls.Add(this.resetChange);
+            this.Controls.Add(this.changeSet);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.checkedListBox2);
@@ -272,6 +297,8 @@
         private System.Windows.Forms.CheckedListBox checkedListBox2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button changeSet;
+        private System.Windows.Forms.Button resetChange;
     }
 }
 
