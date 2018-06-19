@@ -32,15 +32,7 @@ namespace ConwaysGameOfLife
 
         // Regel Array
         int[,] rule;
-        private int [,] fill(int [,] rule)
-        {
-            for (int i =0; i<9; i++)
-            {
-                for (int k = ; k <3; k++)
-
-            }
-            return rule;
-        }
+     
         
 
 
