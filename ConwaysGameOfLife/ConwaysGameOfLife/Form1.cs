@@ -30,12 +30,22 @@ namespace ConwaysGameOfLife
         //Antiwelt setzen
         bool anti = false;
 
+        int[] rule = new int[9];
+        // 0 = non     1 = birth      2 = kill 
+        int x0 = 2;
+        int x1 = 2;
+        int x2 = 0;
+        int x3 = 1;
+        int x4 = 2;
+        int x5 = 2;
+        int x6 = 2;
+        int x7 = 2;
+        int x8 = 2;
         // Regel Array
-        int[,] rule;
-     
-        
-
-
+        private void InitRule()
+        {
+             rule = new int[] { x0, x1, x2, x3, x4, x5, x6, x7, x8 };
+        }
 
 
         private void IniLiveArea()
