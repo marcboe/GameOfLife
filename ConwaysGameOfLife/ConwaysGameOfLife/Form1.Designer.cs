@@ -48,6 +48,7 @@
             this.changeSet = new System.Windows.Forms.Button();
             this.resetChange = new System.Windows.Forms.Button();
             this.clearBox = new System.Windows.Forms.Button();
+            this.sizeLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarSpeed)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -68,7 +69,7 @@
             // 
             // buttonStart
             // 
-            this.buttonStart.Location = new System.Drawing.Point(24, 31);
+            this.buttonStart.Location = new System.Drawing.Point(12, 31);
             this.buttonStart.Name = "buttonStart";
             this.buttonStart.Size = new System.Drawing.Size(75, 23);
             this.buttonStart.TabIndex = 1;
@@ -78,7 +79,7 @@
             // 
             // buttonLeeren
             // 
-            this.buttonLeeren.Location = new System.Drawing.Point(24, 74);
+            this.buttonLeeren.Location = new System.Drawing.Point(174, 31);
             this.buttonLeeren.Name = "buttonLeeren";
             this.buttonLeeren.Size = new System.Drawing.Size(75, 23);
             this.buttonLeeren.TabIndex = 2;
@@ -106,7 +107,7 @@
             // 
             // buttonEinzelschritt
             // 
-            this.buttonEinzelschritt.Location = new System.Drawing.Point(149, 31);
+            this.buttonEinzelschritt.Location = new System.Drawing.Point(93, 31);
             this.buttonEinzelschritt.Name = "buttonEinzelschritt";
             this.buttonEinzelschritt.Size = new System.Drawing.Size(75, 23);
             this.buttonEinzelschritt.TabIndex = 5;
@@ -257,11 +258,21 @@
             this.clearBox.UseVisualStyleBackColor = true;
             this.clearBox.Click += new System.EventHandler(this.clearBox_Click);
             // 
+            // sizeLabel
+            // 
+            this.sizeLabel.AutoSize = true;
+            this.sizeLabel.Location = new System.Drawing.Point(13, 61);
+            this.sizeLabel.Name = "sizeLabel";
+            this.sizeLabel.Size = new System.Drawing.Size(80, 13);
+            this.sizeLabel.TabIndex = 15;
+            this.sizeLabel.Text = "Spielfeldgröße: ";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1067, 599);
+            this.Controls.Add(this.sizeLabel);
             this.Controls.Add(this.clearBox);
             this.Controls.Add(this.resetChange);
             this.Controls.Add(this.changeSet);
@@ -312,6 +323,7 @@
         private System.Windows.Forms.Button changeSet;
         private System.Windows.Forms.Button resetChange;
         private System.Windows.Forms.Button clearBox;
+        private System.Windows.Forms.Label sizeLabel;
     }
 }
 

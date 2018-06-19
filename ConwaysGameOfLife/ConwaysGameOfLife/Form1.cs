@@ -33,7 +33,10 @@ namespace ConwaysGameOfLife
         bool anti = false;
 
         int[] rule = new int[9];
-       
+
+        // Größe Setzen
+        int Xsize = 160;
+        int Ysize = 116;
       
 
         private void IniLiveArea()
@@ -465,6 +468,20 @@ namespace ConwaysGameOfLife
 
             }
         }
+
+
+
+        /*
+         * 
+         *                    GRÖSSE 
+         * 
+         */
+        public void setSizeLbel()
+        {
+            sizeLabel.Text = "Spielfeldgröße"; 
+        }
+
+
 
         /*
          * Die Methode macht Schwierigkeiten: Nach dem Ändern der Hintergrundfarbe verschwinden gezeichnete Punkte und tauchen nicht wieder auf. 
