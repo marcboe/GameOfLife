@@ -304,7 +304,7 @@ namespace ConwaysGameOfLife
         }
 
 
-       private static void LadeZellen(List<Cell> zellenListe)
+        private static void LadeZellen(List<Cell> zellenListe)
         {
             using (System.IO.FileStream fs = new FileStream(@"\loadouts.obj", FileMode.Open))
             {
