@@ -260,7 +260,7 @@ namespace ConwaysGameOfLife
         private void spielfeldSpeichernToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Cell c;
-            using (FileStream fs = new FileStream(@"loadouts.obj", FileMode.Create))
+            using (FileStream fs = new FileStream(@"cellstate.txt", FileMode.Create))
             {
                 using (StreamWriter sw = new StreamWriter(fs))
                 {
@@ -278,7 +278,7 @@ namespace ConwaysGameOfLife
 
         private void spielfeldLadenToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            using (System.IO.FileStream fs = new FileStream(@"loadouts.obj", FileMode.Open, FileAccess.Read))
+            using (System.IO.FileStream fs = new FileStream(@"cellstate.txt", FileMode.Open, FileAccess.Read))
             {
                 TextReader reader = new StreamReader(fs);
                 for (int i = 0; i < 160; i++)
