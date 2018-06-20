@@ -33,18 +33,8 @@ namespace ConwaysGameOfLife
         bool anti = false;
 
         int[] rule = new int[9];
+
        
-       // 0 = non     1 = birth      2 = kill 
-        int x0 = 2, x1 = 2, x2 = 0, x3 = 1, x4 = 2, x5 = 2, x6 = 2, x7 = 2, x8 = 2;
-        // Regel Array
-        private int [] InitRule()
-        {
-             rule = new int[] { x0, x1, x2, x3, x4, x5, x6, x7, x8 };
-            return rule;
-        }
-
-        
-
         private void IniLiveArea()
         {
             LiveArea = new Cell[160, 116];
@@ -68,6 +58,7 @@ namespace ConwaysGameOfLife
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.DrawCell);
             this.Invalidate();
             timer_1.Tick += new EventHandler(Timer_1_Tick);
+            updateBox();
         }
 
 
@@ -114,6 +105,15 @@ namespace ConwaysGameOfLife
         }
 
 
+        /*
+         * 
+         *                    ANIMATION
+         * 
+         */
+
+         // Zählt Environment
+         // Bestimmt Folge 
+         // Updatet Box
         private void Animation()
         {
 
@@ -167,7 +167,11 @@ namespace ConwaysGameOfLife
                     }
                 }
             }
-            this.Invalidate();
+
+            updateBox();
+            
+
+             this.Invalidate();
         }
        
        
@@ -212,6 +216,7 @@ namespace ConwaysGameOfLife
                 }
             }
         }
+
 
         private void buttonLeeren_Click(object sender, EventArgs e)
         {
@@ -295,6 +300,33 @@ namespace ConwaysGameOfLife
             Invalidate();
         }
 
+        
+
+        /*
+         * 
+         *                    REGELN
+         * 
+         */
+
+
+        // 0 = non     1 = birth      2 = kill 
+
+        // Regel Array
+        private int[] InitRule()
+        {
+            int x0 = 2, x1 = 2, x2 = 0, x3 = 1, x4 = 2, x5 = 2, x6 = 2, x7 = 2, x8 = 2;
+            rule = new int[] { x0, x1, x2, x3, x4, x5, x6, x7, x8 };
+            return rule;
+        }
+
+
+        /*
+         * 
+         *                    ANTIWELT
+         * 
+         */
+
+        // Butten
         private void antiwelt_Click(object sender, EventArgs e)
         {
             turnWorld();
@@ -302,17 +334,20 @@ namespace ConwaysGameOfLife
                 antiwelt.Text = "Normal";
             if (!anti)
                 antiwelt.Text = "Antiwelt";
+            updateBox();
         }
 
+
+        // Regeltausch
         private bool turnWorld()
         {
             int change = alive;
             alive = dead;
             dead = change;
 
-            int[] ruleChange  = new int [9];
-            
-            for (int i=0; i<9; i++)
+            int[] ruleChange = new int[9];
+
+            for (int i = 0; i < 9; i++)
             {
                 ruleChange[8 - i] = rule[i];
             }
@@ -323,15 +358,118 @@ namespace ConwaysGameOfLife
                     ruleChange[i] = 1;
                 else
                     if (ruleChange[i] == 1)
-                        ruleChange[i] = 2;
+                    ruleChange[i] = 2;
             }
             rule = ruleChange;
 
 
             anti = !anti;
             return anti;
+        }
+
+        /*
+         * 
+         *                    CHECKBOXEN
+         * 
+         */
+
+        // Box leeren
+        private void clearBox_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < 9; i++)
+            {
+                checkedListBox2.SetItemCheckState(i, CheckState.Unchecked);
+                checkedListBox1.SetItemCheckState(i, CheckState.Unchecked);
+                rule[i] = 0;
+            }
+        }
+
+        // Regeln ändern
+        private void changeSet_Click(object sender, EventArgs e)
+        {
+            // Births auslesen
+            for (int i = 0; i < 9; i++)
+            {
+                if (checkedListBox2.GetItemChecked(i))
+                    if (!checkedListBox1.GetItemChecked(i))
+                        rule[i] = 1;
+                    else
+                    {
+                        MessageBox.Show(" Bitte Möglichkeiten nicht doppelt belegen!", "Fehler!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+            }
+            // Kills auslesen
+            for (int i = 0; i < 9; i++)
+            {
+                if (checkedListBox1.GetItemChecked(i))
+                    if (!checkedListBox2.GetItemChecked(i))
+                        rule[i] = 2;
+                    else
+                    {
+                        MessageBox.Show(" Bitte Möglichkeiten nicht doppelt belegen!", "Fehler!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+
+
+            }
+
+            // leere Boxen auslesen
+            for (int i = 0; i < 9; i++)
+            {
+                if (!checkedListBox1.GetItemChecked(i))
+                    if (!checkedListBox2.GetItemChecked(i))
+                        rule[i] = 0;
+            }
+
+            MessageBox.Show("Einstellungen wurden übernommen", "Fertig", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+
+
 
         }
+
+        // Regeln reset
+        private void resetChange_Click(object sender, EventArgs e)
+        {
+            anti = false;
+            InitRule();
+            antiwelt.Text = "Antiwelt";
+            updateBox();
+            this.Invalidate();
+        }
+
+        // Box aktuellem Stand anpassen
+        private void updateBox()
+        {
+            //Box aktuellem Stand anpassen
+            for (int i = 0; i < 9; i++)
+            {
+                if (rule[i] == 1)
+                {
+                    checkedListBox2.SetItemChecked(i, true);
+                    checkedListBox1.SetItemChecked(i, false);
+                }
+                else if (rule[i] == 2)
+                {
+                    checkedListBox1.SetItemChecked(i, true);
+                    checkedListBox2.SetItemChecked(i, false);
+                }
+                else
+                {
+                    checkedListBox1.SetItemChecked(i, false);
+                    checkedListBox2.SetItemChecked(i, false);
+                }
+
+            }
+        }
+
+
+
+       
+
+
 
         /*
          * Die Methode macht Schwierigkeiten: Nach dem Ändern der Hintergrundfarbe verschwinden gezeichnete Punkte und tauchen nicht wieder auf. 
