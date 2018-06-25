@@ -48,6 +48,7 @@
             this.changeSet = new System.Windows.Forms.Button();
             this.resetChange = new System.Windows.Forms.Button();
             this.clearBox = new System.Windows.Forms.Button();
+            this.testBox1 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarSpeed)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -69,7 +70,6 @@
             this.pictureBox1.MouseEnter += new System.EventHandler(this.pictureBox1_MouseEnter);
             this.pictureBox1.MouseLeave += new System.EventHandler(this.pictureBox1_MouseLeave);
             this.pictureBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseMove);
-            this.pictureBox1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseUp);
             // 
             // buttonStart
             // 
@@ -262,11 +262,19 @@
             this.clearBox.UseVisualStyleBackColor = true;
             this.clearBox.Click += new System.EventHandler(this.clearBox_Click);
             // 
+            // testBox1
+            // 
+            this.testBox1.Location = new System.Drawing.Point(45, 84);
+            this.testBox1.Name = "testBox1";
+            this.testBox1.Size = new System.Drawing.Size(100, 20);
+            this.testBox1.TabIndex = 15;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1067, 599);
+            this.Controls.Add(this.testBox1);
             this.Controls.Add(this.clearBox);
             this.Controls.Add(this.resetChange);
             this.Controls.Add(this.changeSet);
@@ -286,9 +294,6 @@
             this.Name = "Form1";
             this.Text = "Marc und Peters GameOfLife - In die Zeichenfläche klicken, um zu starten.";
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
-            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseMove);
-            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseUp);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarSpeed)).EndInit();
             this.menuStrip1.ResumeLayout(false);
@@ -320,6 +325,7 @@
         private System.Windows.Forms.Button changeSet;
         private System.Windows.Forms.Button resetChange;
         private System.Windows.Forms.Button clearBox;
+        private System.Windows.Forms.TextBox testBox1;
     }
 }
 
