@@ -31,7 +31,8 @@ namespace ConwaysGameOfLife
 
         //Antiwelt setzen
         bool anti = false;
-
+        //ist Maus geklickt? / wird bewegt? / innerhalb der pictureBox?
+        bool mclicked, mmoving, minside;
         int[] rule = new int[9];
 
        
@@ -68,6 +69,59 @@ namespace ConwaysGameOfLife
 
         }
 
+        // -------> Implementierung gedrückter Mauszeiger
+        // Bei gedrückter Maustaste wird mclicked true gesetzt. Bewegt sich die Maus, wird mmoving true gesetzt. Befindet sich die Maus innerhalb der PictureBox, wird mmoving true gesetzt. Trifft alles zu, wird die Click-Methode (so lange) permanent ausgelöst
+        private void draggedClickedMouse()
+        {
+            if (mmoving && mclicked && minside) pictureBox1_Click(this, null);
+        }
+
+        // Methode, die erfasst, ob sich die Maus über der PictureBox bewegt
+        private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
+        {
+            mmoving = true;
+            if (mclicked && minside)
+            {
+                //kurzes Delay, damit eine Mausbewegung außerhalb der PB richtig erfasst wird.
+                System.Threading.Thread.Sleep(5);
+                draggedClickedMouse();
+            }
+        }
+        private void Form1_MouseMove(object sender, MouseEventArgs e)
+        {
+            minside = false;
+        }
+
+        private void pictureBox1_MouseLeave(object sender, EventArgs e)
+        {
+            minside = false;
+
+        }
+
+        private void pictureBox1_MouseEnter(object sender, EventArgs e)
+        {
+            minside = true;
+        }
+
+        private void Form1_MouseDown(object sender, MouseEventArgs e)
+        {
+            minside = false;
+            mclicked = false;
+        }
+
+
+        // Methoden, die erfassen, ob Maus gerade in PictureBox geklickt wird
+        private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
+        {
+            mclicked = true;
+        }
+
+        private void Form1_MouseUp(object sender, MouseEventArgs e)
+        {
+            mclicked = false;
+        }
+
+        // Ende Implementierung gedrückter Mauszeiger  <------- 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             Point p = new Point();
@@ -440,6 +494,7 @@ namespace ConwaysGameOfLife
             this.Invalidate();
         }
 
+
         // Box aktuellem Stand anpassen
         private void updateBox()
         {
@@ -464,22 +519,5 @@ namespace ConwaysGameOfLife
 
             }
         }
-
-
-
-       
-
-
-
-        /*
-         * Die Methode macht Schwierigkeiten: Nach dem Ändern der Hintergrundfarbe verschwinden gezeichnete Punkte und tauchen nicht wieder auf. 
-         * Ist nicht in der Aufgabenstellung gefordert -> Raus
-        private void HintergrundFarbeToolStrip(object sender, EventArgs e)
-        {
-            cBackground.ShowDialog();
-            pictureBox1.BackColor = cBackground.Color;
-            Invalidate();
-        }
-        */
     }
 }
