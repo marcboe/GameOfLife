@@ -243,7 +243,7 @@
             this.resetChange.Name = "resetChange";
             this.resetChange.Size = new System.Drawing.Size(75, 23);
             this.resetChange.TabIndex = 13;
-            this.resetChange.Text = "Standart";
+            this.resetChange.Text = "Standard";
             this.resetChange.UseVisualStyleBackColor = true;
             this.resetChange.Click += new System.EventHandler(this.resetChange_Click);
             // 
