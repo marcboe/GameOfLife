@@ -68,45 +68,44 @@ namespace ConwaysGameOfLife
         {
 
         }
-
         // -------> Implementierung gedrückter Mauszeiger
-        // Bei gedrückter Maustaste wird mclicked true gesetzt. Bewegt sich die Maus, wird mmoving true gesetzt. Befindet sich die Maus innerhalb der PictureBox, wird mmoving true gesetzt. Trifft alles zu, wird die Click-Methode (so lange) permanent ausgelöst
+        // Bei gedrückter Maustaste wird mclicked true gesetzt. Trifft dies zu, wird die Click-Methode bei einer Bewegung ausgelöst
         private void draggedClickedMouse()
         {
-            if (mmoving && mclicked && minside)
+            if (mclicked)
             {
                 Point p = new Point();
                 p = MouseIni(Control.MousePosition);
-                if (p.X >= 0 && p.Y >= 0 && p.X < 161 && p.Y <116)
-                pictureBox1_Click(this, null);
+                //Abfangen der Out-Of-Bounds-Exception für ungültige Punkte
+                if (p.X >= 0 && p.Y >= 0 && p.X < 160 && p.Y < 116)
+                    pictureBox1_Click(this, null);
             }
         }
 
         // Methode, die erfasst, ob sich die Maus über der PictureBox bewegt
         private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
         {
-            mmoving = true;
             draggedClickedMouse();
         }
-
-        private void pictureBox1_MouseLeave(object sender, EventArgs e)
-        {
-            minside = false;
-
-        }
-
-        private void pictureBox1_MouseEnter(object sender, EventArgs e)
-        {
-            minside = true;
-        }
-
-
         // Methoden, die erfassen, ob Maus gerade in PictureBox geklickt wird
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
             mclicked = true;
         }
 
+        private void Form1_MouseDown(object sender, MouseEventArgs e)
+        {
+            mclicked = false;
+        }
+
+        private void Form1_MouseUp(object sender, MouseEventArgs e)
+        {
+            mclicked = false;
+        }
+        private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
+        {
+            mclicked = false;
+        }
 
         // Ende Implementierung gedrückter Mauszeiger  <------- 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -114,9 +113,10 @@ namespace ConwaysGameOfLife
             Point p = new Point();
             p = MouseIni(Control.MousePosition);
             /* Testen der Position: Textbox "testBox1" im Form anlegen, um Test-Code ausführen zu können.
+             * testBox1.Text = System.String.Format("X: {0} Y: {1}", p.X.ToString(), p.Y.ToString());
              * */
-            testBox1.Text = System.String.Format("X: {0} Y: {1}", p.X.ToString(), p.Y.ToString());
-            
+
+
             if (LiveArea[p.X, p.Y].State == 1)
             {
                 LiveArea[p.X, p.Y].State = 0;
