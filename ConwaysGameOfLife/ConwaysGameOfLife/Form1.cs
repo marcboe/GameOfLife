@@ -433,22 +433,10 @@ namespace ConwaysGameOfLife
         }
 
         /*
-         * 
-         *                    CHECKBOXEN
-         * 
-         */
-
-        // Box leeren
-        private void clearBox_Click(object sender, EventArgs e)
-        {
-            for (int i = 0; i < 9; i++)
-            {
-                checkedListBox2.SetItemCheckState(i, CheckState.Unchecked);
-                checkedListBox1.SetItemCheckState(i, CheckState.Unchecked);
-                rule[i] = 0;
-            }
-        }
-
+        * 
+        *                    RADIO BUTTONS
+        * 
+        */
         private void tuemmler_Click(object sender, EventArgs e)
         {
             spielfeldLadenFlexibel("tuemmler", this, null);
@@ -473,6 +461,37 @@ namespace ConwaysGameOfLife
         {
             spielfeldLadenFlexibel("hallo", this, null);
         }
+        private void Spaceships_CheckedChanged(object sender, EventArgs e)
+        {
+            spielfeldLadenFlexibel("spaceships", this, null);
+        }
+        private void Gleiter_CheckedChanged(object sender, EventArgs e)
+        {
+            spielfeldLadenFlexibel("gleiter", this, null);
+        }
+
+
+        /*
+         * 
+         *                    CHECKBOXEN
+         * 
+         */
+
+        // Box leeren
+        private void clearBox_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < 9; i++)
+            {
+                checkedListBox2.SetItemCheckState(i, CheckState.Unchecked);
+                checkedListBox1.SetItemCheckState(i, CheckState.Unchecked);
+                rule[i] = 0;
+            }
+        }
+
+       
+
+
+
 
         // Regeln ändern
         private void changeSet_Click(object sender, EventArgs e)
