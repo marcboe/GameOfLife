@@ -36,7 +36,7 @@ namespace ConwaysGameOfLife
         bool mclicked, mmoving, minside;
         int[] rule = new int[9];
 
-       
+
         private void IniLiveArea()
         {
             LiveArea = new Cell[160, 116];
@@ -67,7 +67,7 @@ namespace ConwaysGameOfLife
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            spielfeldLadenFlexibel("startscreen", this, null);
         }
         // -------> Implementierung gedrückter Mauszeiger
         // Bei gedrückter Maustaste wird mclicked true gesetzt. Trifft dies zu, wird die Click-Methode bei einer Bewegung ausgelöst
@@ -156,14 +156,14 @@ namespace ConwaysGameOfLife
          * 
          */
 
-         // Zählt Environment
-         // Bestimmt Folge 
-         // Updatet Box
+        // Zählt Environment
+        // Bestimmt Folge 
+        // Updatet Box
         private void Animation()
         {
 
-           
-           
+
+
             for (int i = 0; i < 160; i++)
             {
                 for (int k = 0; k < 116; k++)
@@ -192,34 +192,34 @@ namespace ConwaysGameOfLife
                     // 1 = alive
                     // 2 = dead
 
-                    
+
 
 
                     // Normale Welt
                     // kill ?
-                    if (LiveArea[i,k].State == alive)           // 0,1,   4,5,6,7,8
+                    if (LiveArea[i, k].State == alive)           // 0,1,   4,5,6,7,8
                     {
-                        
-                        if (rule[ LiveArea[i, k].Environment ] == 2)
-                            LiveArea[i, k].State = 2;    
+
+                        if (rule[LiveArea[i, k].Environment] == 2)
+                            LiveArea[i, k].State = 2;
                     }
                     // Normale Welt
                     // birth ?
-                    if (LiveArea[i, k].State == 0 || LiveArea[i, k].State == dead )
+                    if (LiveArea[i, k].State == 0 || LiveArea[i, k].State == dead)
                     {
-                        if (rule[ LiveArea[i, k].Environment ] == 1)
+                        if (rule[LiveArea[i, k].Environment] == 1)
                             LiveArea[i, k].State = 1;
                     }
                 }
             }
 
             updateBox();
-            
 
-             this.Invalidate();
+
+            this.Invalidate();
         }
-       
-       
+
+
 
         public void DrawCell(object sender, System.Windows.Forms.PaintEventArgs e)
         {
@@ -240,7 +240,7 @@ namespace ConwaysGameOfLife
                     }
                 }
             }
-            
+
         }
 
         private void buttonStart_Click(object sender, EventArgs e)
@@ -257,7 +257,7 @@ namespace ConwaysGameOfLife
                     timer_1.Enabled = false;
                     timer_1.Stop();
                     buttonStart.Text = "Start";
-                    this.Text = String.Format("Marc und Peters GameOfLife - Simulation beendet bei Runde {0}.",Math.Round(turns).ToString());
+                    this.Text = String.Format("Marc und Peters GameOfLife - Simulation beendet bei Runde {0}.", Math.Round(turns).ToString());
                 }
             }
         }
@@ -274,7 +274,7 @@ namespace ConwaysGameOfLife
         private void trackBarSpeed_Scroll(object sender, EventArgs e)
         {
             if (trackBarSpeed.Value == 0) timer_1.Interval = 1000;
-            else timer_1.Interval = 1000-(95*trackBarSpeed.Value); 
+            else timer_1.Interval = 1000 - (95 * trackBarSpeed.Value);
         }
 
         private void buttonEinzelschritt_Click(object sender, EventArgs e)
@@ -344,8 +344,28 @@ namespace ConwaysGameOfLife
             }
             Invalidate();
         }
+        private void spielfeldLadenFlexibel(String filename, object sender, EventArgs e)
+        {
+            String n = "figuren/" + filename + ".txt";
+            using (System.IO.FileStream fs = new FileStream(@n, FileMode.Open, FileAccess.Read))
+            {
+                TextReader reader = new StreamReader(fs);
+                for (int i = 0; i < 160; i++)
+                {
+                    for (int l = 0; l < 116; l++)
+                    {
+                        string c = reader.ReadLine();
+                        if (c == "0") LiveArea[i, l].State = 0;
+                        else if (c == "1") LiveArea[i, l].State = 1;
+                        else LiveArea[i, l].State = 2;
+                    }
+                }
+            }
+            Invalidate();
+        }
 
-        
+
+
 
         /*
          * 
@@ -427,6 +447,31 @@ namespace ConwaysGameOfLife
                 checkedListBox1.SetItemCheckState(i, CheckState.Unchecked);
                 rule[i] = 0;
             }
+        }
+
+        private void tuemmler_Click(object sender, EventArgs e)
+        {
+            spielfeldLadenFlexibel("tuemmler", this, null);
+        }
+
+        private void oktagon_Click(object sender, EventArgs e)
+        {
+            spielfeldLadenFlexibel("oktagon", this, null);
+        }
+
+        private void pulsator_Click(object sender, EventArgs e)
+        {
+            spielfeldLadenFlexibel("pulsator", this, null);
+        }
+
+        private void startscreen_Click(object sender, EventArgs e)
+        {
+            spielfeldLadenFlexibel("startscreen", this, null);
+        }
+
+        private void hallo_Click(object sender, EventArgs e)
+        {
+            spielfeldLadenFlexibel("hallo", this, null);
         }
 
         // Regeln ändern
