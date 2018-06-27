@@ -17,6 +17,7 @@ namespace ConwaysGameOfLife
     {
         public static System.Windows.Forms.Timer timer_1 = new System.Windows.Forms.Timer();
 
+        private Point pDrag;
         private static Cell[,] LiveArea;
         private static double turns;
         // brushDead wird benötigt, um die Farbe toter Zellen zu überschreiben
@@ -85,7 +86,9 @@ namespace ConwaysGameOfLife
         // Methode, die erfasst, ob sich die Maus über der PictureBox bewegt
         private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
         {
-            draggedClickedMouse();
+            if (!(pDrag.ToString() == MouseIni(Control.MousePosition).ToString()))
+                draggedClickedMouse();
+            pDrag = MouseIni(Control.MousePosition);
         }
         // Methoden, die erfassen, ob Maus gerade in PictureBox geklickt wird
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
