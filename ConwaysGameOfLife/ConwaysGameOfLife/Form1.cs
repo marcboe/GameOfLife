@@ -28,7 +28,7 @@ namespace ConwaysGameOfLife
         private ColorDialog cDead = new ColorDialog();
         // nicht benötigt, Methode wird nicht verwendet. private ColorDialog cBackground = new ColorDialog();
 
-        int alive = 1, dead = 2;
+        
 
         //Antiwelt setzen
         bool anti = false;
@@ -195,17 +195,17 @@ namespace ConwaysGameOfLife
 
 
 
-                    // Normale Welt
+                    
                     // kill ?
-                    if (LiveArea[i, k].State == alive)           // 0,1,   4,5,6,7,8
+                    if (LiveArea[i, k].State == 1)           // 0,1,   4,5,6,7,8
                     {
 
                         if (rule[LiveArea[i, k].Environment] == 2)
                             LiveArea[i, k].State = 2;
                     }
-                    // Normale Welt
+                   
                     // birth ?
-                    if (LiveArea[i, k].State == 0 || LiveArea[i, k].State == dead)
+                    else if (LiveArea[i, k].State == 0 || LiveArea[i, k].State == 2)
                     {
                         if (rule[LiveArea[i, k].Environment] == 1)
                             LiveArea[i, k].State = 1;
@@ -406,9 +406,7 @@ namespace ConwaysGameOfLife
         // Regeltausch
         private bool turnWorld()
         {
-            int change = alive;
-            alive = dead;
-            dead = change;
+           
 
             int[] ruleChange = new int[9];
 
